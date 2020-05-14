@@ -22,8 +22,6 @@ let client = api(aspida(axios, axiosConfig))
     client.categories.get()
         .then(response => {
             let category_list = response.data.category_list
-            console.log(category_list)
-            console.log(category_list.categories)
             category_list.categories.forEach(cat => console.log(cat.name))
         })
         .catch(error => console.log(error))
