@@ -1,2 +1,6 @@
 {
+    "compilerOptions": {
+        "esModuleInterop": true
+//        "moduleResolution": "node"
+    }
 }

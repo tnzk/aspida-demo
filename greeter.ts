@@ -1,20 +1,30 @@
-const axios = require('axios').default
-require('dotenv').config()
+import dotenv from "dotenv"
+import axios from "axios"
+import aspida from "@aspida/axios"
+import api from "./apis/$api"
+import type { CategoryList } from "./apis/categories"
 
-let config = {
+dotenv.config()
+
+const axiosConfig = {
+    timeout: 3000,
+    baseURL: 'https://discourse.joinmastodon.org',
     headers: {
         'Accept': 'application/json',
-        'Api-Username': process.env.DISCOURSE_API_USERNAME,
-        'Api-Key': process.env.DISCOURSE_API_KEY,
+//        'Api-Username': process.env.DISCOURSE_API_USERNAME,
+//        'Api-Key': process.env.DISCOURSE_API_KEY,
     }
 }
 
-let url = 'https://community.codevillage.jp/categories'
+let client = api(aspida(axios, axiosConfig))
 
-let f = (url:string) => {
-    axios.get(url, config)
-        .then(response => console.log(response.data))
+;(async () => {
+    client.categories.get()
+        .then(response => {
+            let category_list = response.data.category_list
+            console.log(category_list)
+            console.log(category_list.categories)
+            category_list.categories.forEach(cat => console.log(cat.name))
+        })
         .catch(error => console.log(error))
-}
-
-f(url)
+})()
