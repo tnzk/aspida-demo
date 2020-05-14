@@ -1,8 +1,8 @@
 import dotenv from "dotenv"
 import axios from "axios"
 import aspida from "@aspida/axios"
-import api from "./apis/$api"
-import type { CategoryList } from "./apis/categories"
+import api from "../apis/$api"
+import type { CategoryList } from "../apis/categories"
 
 dotenv.config()
 

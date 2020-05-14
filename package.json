@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "yarn run tsc",
-    "start": "yarn run tsc && node greeter.js",
+    "start": "yarn run tsc && node dist/src/discourse-list-category.js",
     "api:build": "aspida --build"
   },
   "dependencies": {
